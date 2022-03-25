@@ -17,35 +17,15 @@
         <div class="row justify-content-md-center">
             <div class="col-md-9">
                 <h1 class="text-danger">Summer Note Editor</h1>
-                <form action="{{route('post.store')}}" method="post">
-                    @csrf
-                    <label for="">Título</label>
-                    <input type="text" name="title" id="" class="form-control">
-                    <label for="">Descrição</label>
-                    <textarea name="description" id="summernote" cols="30" rows="10" class="form-control"></textarea>
-                    <button type="submit" class="btn btn-lg btn-primary" class="form-control">Enviar</button>
-                </form>
+                <a href="/create">Add New Post</a>
+
+                @foreach ($posts as $post)
+                    <h3>{{ $post->title }}</h3>
+                    <div>{!! $post->description !!}</div>
+                    <hr>
+                @endforeach
             </div>
         </div>
     </div>
-
-    <script>
-      $('#summernote').summernote({
-        placeholder: 'Descrição...',
-        tabsize: 2,
-        height: 250,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['fontname', ['fontname']],
-            ['color', ['color']],
-            ['fontsize', ['fontsize']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']],
-        ],
-      });
-    </script>
   </body>
 </html>
